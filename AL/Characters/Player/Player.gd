@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 export var speed = 100
+export var accel_rate = 2.5
+export var decel_rate = 0.8
+export var jump_strength_multiplier = 0.45
 
 enum STATE{Idle, Running, Crouching, Jumping, Falling, Climbing}
 var state = STATE.Idle
@@ -40,7 +43,7 @@ func crouch():
 func jump():
 	print("Jump")
 	state = STATE.Jumping
-	velocity.y = -ENV.GRAVITY
+	velocity.y = -(ENV.GRAVITY*jump_strength_multiplier)
 	$AnimationPlayer.play("Jump")
 
 

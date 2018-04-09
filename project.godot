@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ENV="*res://AL/Core/env.gd"
+global="*res://AL/Core/global.gd"
 
 [input]
 
@@ -35,4 +36,5 @@ player_jump=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_nam
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

@@ -3,7 +3,7 @@
 [ext_resource path="res://AL/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://AL/Characters/Player/Character_AL_v2.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 
 resource_name = "Attack"
 length = 1.0
@@ -70,7 +70,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=2]
 
 resource_name = "Climb"
 length = 1.2
@@ -137,7 +137,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 resource_name = "Crouch"
 length = 1.0
@@ -204,7 +204,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 
 resource_name = "Crouch Attack"
 length = 1.0
@@ -271,7 +271,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=5]
 
 resource_name = "Death"
 length = 0.8
@@ -302,9 +302,8 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=6]
 
-resource_name = "Idle"
 length = 3.0
 loop = false
 step = 0.1
@@ -369,9 +368,8 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=7]
 
-resource_name = "Idle A1"
 length = 1.0
 loop = false
 step = 0.1
@@ -436,9 +434,8 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=8]
 
-resource_name = "Idle A2"
 length = 1.6
 loop = false
 step = 0.1
@@ -637,7 +634,7 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 
 resource_name = "Roll"
 length = 0.4
@@ -704,9 +701,8 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=12]
 
-resource_name = "Run"
 length = 1.5
 loop = true
 step = 0.1
@@ -771,9 +767,8 @@ tracks/4/keys = {
 "values": [ Vector2( 1.15141, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=13]
 
-resource_name = "Run Attack"
 length = 1.6
 loop = true
 step = 0.1
@@ -838,9 +833,8 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 
-resource_name = "To Ball"
 length = 0.5
 loop = false
 step = 0.1
@@ -905,9 +899,8 @@ tracks/4/keys = {
 "values": [ 0.495331 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=15]
 
-resource_name = "Wall Grip"
 length = 1.0
 loop = true
 step = 0.1
@@ -972,13 +965,13 @@ tracks/4/keys = {
 "values": [ Vector2( 1.46544, 0.104673 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=16]
 
 custom_solver_bias = 0.0
 radius = 3.88667
 height = 6.77577
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -986,6 +979,7 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 speed = 100
+jump_strength_multiplier = 0.45
 
 [node name="Spr_Character" type="Sprite" parent="." index="0"]
 
@@ -1003,27 +997,27 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Attack = SubResource( 4 )
-anims/Climb = SubResource( 14 )
-anims/Crouch = SubResource( 5 )
-"anims/Crouch Attack" = SubResource( 6 )
-anims/Death = SubResource( 16 )
-anims/Idle = SubResource( 1 )
-"anims/Idle A1" = SubResource( 2 )
-"anims/Idle A2" = SubResource( 3 )
+anims/Attack = SubResource( 1 )
+anims/Climb = SubResource( 2 )
+anims/Crouch = SubResource( 3 )
+"anims/Crouch Attack" = SubResource( 4 )
+anims/Death = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+"anims/Idle A1" = SubResource( 7 )
+"anims/Idle A2" = SubResource( 8 )
 anims/Jump = SubResource( 9 )
 anims/Land = SubResource( 10 )
-anims/Roll = SubResource( 12 )
-anims/Run = SubResource( 7 )
-"anims/Run Attack" = SubResource( 8 )
-"anims/To Ball" = SubResource( 13 )
-"anims/Wall Grip" = SubResource( 11 )
+anims/Roll = SubResource( 11 )
+anims/Run = SubResource( 12 )
+"anims/Run Attack" = SubResource( 13 )
+"anims/To Ball" = SubResource( 14 )
+"anims/Wall Grip" = SubResource( 15 )
 blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( 1.46544, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 16 )
 _sections_unfolded = [ "Transform" ]
 
 
