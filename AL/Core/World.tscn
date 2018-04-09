@@ -151,6 +151,7 @@ shape = SubResource( 1 )
 [node name="Player" parent="." index="6" instance=ExtResource( 2 )]
 
 position = Vector2( 180, 20 )
+speed = 65
 accel_rate = 2.5
 decel_rate = 0.8
 jump_strength_multiplier = 0.45
