@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://AL/Core/Shaders/Tileset_Anim_H.shader" type="Shader" id=1]
+[ext_resource path="res://AL/Tileset/Tileset_001.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/frame_size = 8
+shader_param/frames = 4
+shader_param/anim_time = 0.5
+_sections_unfolded = [ "shader_param" ]
+
+[node name="Tileset_001" type="Node2D" index="0"]
+
+[node name="Anim_Test" type="Sprite" parent="." index="0"]
+
+material = SubResource( 1 )
+position = Vector2( -8, -8 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 88, 8, 8 )
+_sections_unfolded = [ "Material", "Region" ]
+
+
