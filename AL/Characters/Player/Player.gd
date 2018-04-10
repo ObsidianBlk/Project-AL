@@ -16,6 +16,22 @@ var ctrl = {
 	jump={down=false, timestamp=0}
 }
 
+var dash_check_timestamp = 0
+var dash_check_direction = 0
+var dash_timer = 0
+
+
+func check_dash(dir, btn_timestamp):
+	if dash_check_direction == 0 or dash_check_direction == dir:
+		if dash_check_timestamp > 0 and dash_check_timestamp < btn_timestamp:
+			if OS.get_ticks_msec() - dash_check_timestamp <= 300:
+				dash_timer = 0.3
+			dash_check_timestamp = 0
+			dash_check_direction = 0
+		else:
+			dash_check_timestamp = OS.get_ticks_msec()
+			dash_check_direction = dir
+
 
 func flip(dir):
 	if $Spr_Character.flip_h and dir == 1:
@@ -35,8 +51,21 @@ func run(dir, state_change_only=false):
 		$AnimationPlayer.play("Run")
 	flip(dir)
 	if not state_change_only:
-		velocity.x = dir*speed
+		move(dir)
 
+func move(dir, delta = 0):
+	flip(dir)
+	if state == STATE.Running:
+		if dash_timer > 0:
+			velocity.x = dir*speed*2
+		else:
+			velocity.x = dir*speed
+	elif state == STATE.Jumping or state == STATE.Falling:
+		if state == STATE.Jumping and dash_timer > 0:
+			velocity.y = 0
+			velocity.x = dir*speed*2
+		else:
+			velocity.x = clamp(velocity.x + ((dir*speed*2)*delta), -speed, speed)
 
 func crouch():
 	state = STATE.Crouching
@@ -75,8 +104,10 @@ func process_ctrls(delta):
 		STATE.Idle:
 			if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
 				if ctrl.left.down:
+					check_dash(-1, ctrl.left.timestamp)
 					run(-1)
 				elif ctrl.right.down:
+					check_dash(1, ctrl.right.timestamp)
 					run(1)
 			elif ctrl.crouch.down:
 				crouch()
@@ -91,33 +122,56 @@ func process_ctrls(delta):
 			elif ctrl.right.down:
 				flip(1)
 		STATE.Running:
-			if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
-				if ctrl.left.down:
-					run(-1)
-				elif ctrl.right.down:
-					run(1)
-			else:
-				idle()
-			if ctrl.jump.down:
-				jump()
-			if ctrl.crouch.down:
-				crouch()
+			if dash_timer <= 0:
+				if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
+					if ctrl.left.down:
+						check_dash(-1, ctrl.left.timestamp)
+						run(-1)
+					elif ctrl.right.down:
+						check_dash(1, ctrl.right.timestamp)
+						run(1)
+				else:
+					idle()
+				if ctrl.jump.down:
+					jump()
+				if ctrl.crouch.down:
+					crouch()
+		STATE.Jumping, STATE.Falling:
+			if dash_timer <= 0:
+				if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
+					if ctrl.left.down:
+						if state == STATE.Jumping:
+							check_dash(-1, ctrl.left.timestamp)
+						move(-1, delta)
+					elif ctrl.right.down:
+						if state == STATE.Jumping:
+							check_dash(1, ctrl.right.timestamp)
+						move(1, delta)
 
 
 func _physics_process(delta):
 	process_ctrls(delta)
-	if not is_on_floor():
-		velocity.y = min(velocity.y + (ENV.GRAVITY*delta), ENV.MAX_GRAVITY)
-	elif velocity.y > 0:
+	if velocity.y < 0 and is_on_ceiling():
 		velocity.y = 0
 	
-	move_and_slide(velocity, ENV.UP)
+	if dash_timer <= 0:
+		if not is_on_floor():
+			velocity.y = min(velocity.y + (ENV.GRAVITY*delta), ENV.MAX_GRAVITY)
+		elif velocity.y > 0:
+			velocity.y = 0
+	else:
+		dash_timer = max(dash_timer - delta, 0)
+		if dash_timer <= 0:
+			velocity.x = 0
+	
+	move_and_slide(velocity, ENV.UP, 12.0, 3, 0.8726639)
 		
 	if is_on_wall():
 		# TODO: If "Wall Jump" unlocked, test if we're in a landing state and set state accordingly.
 		velocity.x = 0
+		dash_timer = 0
 	if is_on_floor():
-		if state == STATE.Falling:
+		if state == STATE.Jumping or state == STATE.Falling:
 			if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
 				if ctrl.left.down:
 					run(-1, true)

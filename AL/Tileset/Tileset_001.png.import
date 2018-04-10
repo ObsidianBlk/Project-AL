@@ -10,7 +10,7 @@ source_file="res://AL/Tileset/Tileset_001.png"
 source_md5="16977f1237e45005e98ed98d4a24ac07"
 
 dest_files=[ "res://.import/Tileset_001.png-9df01b532b495e58a6de9cba91540bd4.stex" ]
-dest_md5="fdbda5ec6186e6e87303a1287e7643f3"
+dest_md5="09e3b218a3c0bb6f8cc6934a016af777"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

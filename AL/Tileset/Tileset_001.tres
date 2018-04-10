@@ -1,0 +1,896 @@
+[gd_resource type="TileSet" load_steps=9 format=2]
+
+[ext_resource path="res://AL/Core/Shaders/Tileset_Anim_H.shader" type="Shader" id=1]
+[ext_resource path="res://AL/Tileset/Tileset_001.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/frame_size = 8
+shader_param/frames = 4
+shader_param/anim_time = 1.5
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4, 4 )
+
+[sub_resource type="SegmentShape2D" id=3]
+
+custom_solver_bias = 0.0
+a = Vector2( 4, -4 )
+b = Vector2( -3.5, 4.5 )
+
+[sub_resource type="SegmentShape2D" id=4]
+
+custom_solver_bias = 0.0
+a = Vector2( -4, -4 )
+b = Vector2( 3.5, 4.5 )
+
+[sub_resource type="SegmentShape2D" id=5]
+
+custom_solver_bias = 0.0
+a = Vector2( -5, 3 )
+b = Vector2( 3, -5 )
+
+[sub_resource type="SegmentShape2D" id=6]
+
+custom_solver_bias = 0.0
+a = Vector2( 5, 3 )
+b = Vector2( -3, -5 )
+
+[resource]
+
+0/name = "Debug"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/material = SubResource( 1 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 88, 8, 8 )
+0/is_autotile = false
+0/occluder_offset = Vector2( 4, 4 )
+0/navigation_offset = Vector2( 4, 4 )
+0/shapes = [  ]
+1/name = "Hollow Red TL"
+1/texture = ExtResource( 2 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 8, 8 )
+1/is_autotile = false
+1/occluder_offset = Vector2( 4, 4 )
+1/navigation_offset = Vector2( 4, 4 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+2/name = "Hollow Red T"
+2/texture = ExtResource( 2 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 8, 0, 8, 8 )
+2/is_autotile = false
+2/occluder_offset = Vector2( 4, 4 )
+2/navigation_offset = Vector2( 4, 4 )
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+3/name = "Hollow Red TR"
+3/texture = ExtResource( 2 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 16, 0, 8, 8 )
+3/is_autotile = false
+3/occluder_offset = Vector2( 4, 4 )
+3/navigation_offset = Vector2( 4, 4 )
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+4/name = "Hollow Red R"
+4/texture = ExtResource( 2 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 16, 8, 8, 8 )
+4/is_autotile = false
+4/occluder_offset = Vector2( 4, 4 )
+4/navigation_offset = Vector2( 4, 4 )
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+5/name = "Hollow Red BR"
+5/texture = ExtResource( 2 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 16, 16, 8, 8 )
+5/is_autotile = false
+5/occluder_offset = Vector2( 4, 4 )
+5/navigation_offset = Vector2( 4, 4 )
+5/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+6/name = "Hollow Red B"
+6/texture = ExtResource( 2 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 8, 16, 8, 8 )
+6/is_autotile = false
+6/occluder_offset = Vector2( 4, 4 )
+6/navigation_offset = Vector2( 4, 4 )
+6/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+7/name = "Hollow Red BL"
+7/texture = ExtResource( 2 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 16, 8, 8 )
+7/is_autotile = false
+7/occluder_offset = Vector2( 4, 4 )
+7/navigation_offset = Vector2( 4, 4 )
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+8/name = "Hollow Red L"
+8/texture = ExtResource( 2 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 8, 8, 8 )
+8/is_autotile = false
+8/occluder_offset = Vector2( 4, 4 )
+8/navigation_offset = Vector2( 4, 4 )
+8/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+9/name = "Hollow Green TL"
+9/texture = ExtResource( 2 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 24, 0, 8, 8 )
+9/is_autotile = false
+9/occluder_offset = Vector2( 4, 4 )
+9/navigation_offset = Vector2( 4, 4 )
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+10/name = "Hollow Green T"
+10/texture = ExtResource( 2 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 32, 0, 8, 8 )
+10/is_autotile = false
+10/occluder_offset = Vector2( 4, 4 )
+10/navigation_offset = Vector2( 4, 4 )
+10/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+11/name = "Hollow Green TR"
+11/texture = ExtResource( 2 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 40, 0, 8, 8 )
+11/is_autotile = false
+11/occluder_offset = Vector2( 4, 4 )
+11/navigation_offset = Vector2( 4, 4 )
+11/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+12/name = "Hollow Green R"
+12/texture = ExtResource( 2 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 40, 8, 8, 8 )
+12/is_autotile = false
+12/occluder_offset = Vector2( 4, 4 )
+12/navigation_offset = Vector2( 4, 4 )
+12/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+13/name = "Hollow Green BR"
+13/texture = ExtResource( 2 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 40, 16, 8, 8 )
+13/is_autotile = false
+13/occluder_offset = Vector2( 4, 4 )
+13/navigation_offset = Vector2( 4, 4 )
+13/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+14/name = "Hollow Green B"
+14/texture = ExtResource( 2 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 32, 16, 8, 8 )
+14/is_autotile = false
+14/occluder_offset = Vector2( 4, 4 )
+14/navigation_offset = Vector2( 4, 4 )
+14/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+15/name = "Hollow Green BL"
+15/texture = ExtResource( 2 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 24, 16, 8, 8 )
+15/is_autotile = false
+15/occluder_offset = Vector2( 4, 4 )
+15/navigation_offset = Vector2( 4, 4 )
+15/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+16/name = "Hollow Green L"
+16/texture = ExtResource( 2 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 24, 8, 8, 8 )
+16/is_autotile = false
+16/occluder_offset = Vector2( 4, 4 )
+16/navigation_offset = Vector2( 4, 4 )
+16/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+17/name = "Hollow Blue TL"
+17/texture = ExtResource( 2 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 48, 0, 8, 8 )
+17/is_autotile = false
+17/occluder_offset = Vector2( 4, 4 )
+17/navigation_offset = Vector2( 4, 4 )
+17/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+18/name = "Hollow Blue T"
+18/texture = ExtResource( 2 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 56, 0, 8, 8 )
+18/is_autotile = false
+18/occluder_offset = Vector2( 4, 4 )
+18/navigation_offset = Vector2( 4, 4 )
+18/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+19/name = "Hollow Blue TR"
+19/texture = ExtResource( 2 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 64, 0, 8, 8 )
+19/is_autotile = false
+19/occluder_offset = Vector2( 4, 4 )
+19/navigation_offset = Vector2( 4, 4 )
+19/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+20/name = "Hollow Blue R"
+20/texture = ExtResource( 2 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 64, 8, 8, 8 )
+20/is_autotile = false
+20/occluder_offset = Vector2( 4, 4 )
+20/navigation_offset = Vector2( 4, 4 )
+20/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+21/name = "Hollow Blue BR"
+21/texture = ExtResource( 2 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 64, 16, 8, 8 )
+21/is_autotile = false
+21/occluder_offset = Vector2( 4, 4 )
+21/navigation_offset = Vector2( 4, 4 )
+21/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+22/name = "Hollow Blue B"
+22/texture = ExtResource( 2 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 56, 16, 8, 8 )
+22/is_autotile = false
+22/occluder_offset = Vector2( 4, 4 )
+22/navigation_offset = Vector2( 4, 4 )
+22/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+23/name = "Hollow Blue BL"
+23/texture = ExtResource( 2 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 48, 16, 8, 8 )
+23/is_autotile = false
+23/occluder_offset = Vector2( 4, 4 )
+23/navigation_offset = Vector2( 4, 4 )
+23/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+24/name = "Hollow Blue L"
+24/texture = ExtResource( 2 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 48, 8, 8, 8 )
+24/is_autotile = false
+24/occluder_offset = Vector2( 4, 4 )
+24/navigation_offset = Vector2( 4, 4 )
+24/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+25/name = "Red Sq"
+25/texture = ExtResource( 2 )
+25/tex_offset = Vector2( 0, 0 )
+25/modulate = Color( 1, 1, 1, 1 )
+25/region = Rect2( 8, 8, 8, 8 )
+25/is_autotile = false
+25/occluder_offset = Vector2( 4, 4 )
+25/navigation_offset = Vector2( 4, 4 )
+25/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+26/name = "Red HCap L"
+26/texture = ExtResource( 2 )
+26/tex_offset = Vector2( 0, 0 )
+26/modulate = Color( 1, 1, 1, 1 )
+26/region = Rect2( 72, 0, 8, 8 )
+26/is_autotile = false
+26/occluder_offset = Vector2( 4, 4 )
+26/navigation_offset = Vector2( 4, 4 )
+26/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+27/name = "Red HCap R"
+27/texture = ExtResource( 2 )
+27/tex_offset = Vector2( 0, 0 )
+27/modulate = Color( 1, 1, 1, 1 )
+27/region = Rect2( 80, 0, 8, 8 )
+27/is_autotile = false
+27/occluder_offset = Vector2( 4, 4 )
+27/navigation_offset = Vector2( 4, 4 )
+27/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+28/name = "Red H"
+28/texture = ExtResource( 2 )
+28/tex_offset = Vector2( 0, 0 )
+28/modulate = Color( 1, 1, 1, 1 )
+28/region = Rect2( 112, 0, 8, 8 )
+28/is_autotile = false
+28/occluder_offset = Vector2( 4, 4 )
+28/navigation_offset = Vector2( 4, 4 )
+28/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+29/name = "Red Cross"
+29/texture = ExtResource( 2 )
+29/tex_offset = Vector2( 0, 0 )
+29/modulate = Color( 1, 1, 1, 1 )
+29/region = Rect2( 88, 16, 8, 8 )
+29/is_autotile = false
+29/occluder_offset = Vector2( 4, 4 )
+29/navigation_offset = Vector2( 4, 4 )
+29/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+30/name = "Red VCap T"
+30/texture = ExtResource( 2 )
+30/tex_offset = Vector2( 0, 0 )
+30/modulate = Color( 1, 1, 1, 1 )
+30/region = Rect2( 104, 0, 8, 8 )
+30/is_autotile = false
+30/occluder_offset = Vector2( 4, 4 )
+30/navigation_offset = Vector2( 4, 4 )
+30/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+31/name = "Red VCap B"
+31/texture = ExtResource( 2 )
+31/tex_offset = Vector2( 0, 0 )
+31/modulate = Color( 1, 1, 1, 1 )
+31/region = Rect2( 104, 8, 8, 8 )
+31/is_autotile = false
+31/occluder_offset = Vector2( 4, 4 )
+31/navigation_offset = Vector2( 4, 4 )
+31/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+32/name = "Red V"
+32/texture = ExtResource( 2 )
+32/tex_offset = Vector2( 0, 0 )
+32/modulate = Color( 1, 1, 1, 1 )
+32/region = Rect2( 112, 8, 8, 8 )
+32/is_autotile = false
+32/occluder_offset = Vector2( 4, 4 )
+32/navigation_offset = Vector2( 4, 4 )
+32/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+33/name = "Green Sq"
+33/texture = ExtResource( 2 )
+33/tex_offset = Vector2( 0, 0 )
+33/modulate = Color( 1, 1, 1, 1 )
+33/region = Rect2( 32, 8, 8, 8 )
+33/is_autotile = false
+33/occluder_offset = Vector2( 4, 4 )
+33/navigation_offset = Vector2( 4, 4 )
+33/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+34/name = "Green HCap L"
+34/texture = ExtResource( 2 )
+34/tex_offset = Vector2( 0, 0 )
+34/modulate = Color( 1, 1, 1, 1 )
+34/region = Rect2( 72, 8, 8, 8 )
+34/is_autotile = false
+34/occluder_offset = Vector2( 4, 4 )
+34/navigation_offset = Vector2( 4, 4 )
+34/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+35/name = "Green HCap R"
+35/texture = ExtResource( 2 )
+35/tex_offset = Vector2( 0, 0 )
+35/modulate = Color( 1, 1, 1, 1 )
+35/region = Rect2( 80, 8, 8, 8 )
+35/is_autotile = false
+35/occluder_offset = Vector2( 4, 4 )
+35/navigation_offset = Vector2( 4, 4 )
+35/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+36/name = "Green H"
+36/texture = ExtResource( 2 )
+36/tex_offset = Vector2( 0, 0 )
+36/modulate = Color( 1, 1, 1, 1 )
+36/region = Rect2( 120, 0, 8, 8 )
+36/is_autotile = false
+36/occluder_offset = Vector2( 4, 4 )
+36/navigation_offset = Vector2( 4, 4 )
+36/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+37/name = "Green Cross"
+37/texture = ExtResource( 2 )
+37/tex_offset = Vector2( 0, 0 )
+37/modulate = Color( 1, 1, 1, 1 )
+37/region = Rect2( 96, 16, 8, 8 )
+37/is_autotile = false
+37/occluder_offset = Vector2( 4, 4 )
+37/navigation_offset = Vector2( 4, 4 )
+37/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+38/name = "Green VCap T"
+38/texture = ExtResource( 2 )
+38/tex_offset = Vector2( 0, 0 )
+38/modulate = Color( 1, 1, 1, 1 )
+38/region = Rect2( 96, 0, 8, 8 )
+38/is_autotile = false
+38/occluder_offset = Vector2( 4, 4 )
+38/navigation_offset = Vector2( 4, 4 )
+38/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+39/name = "Green VCap B"
+39/texture = ExtResource( 2 )
+39/tex_offset = Vector2( 0, 0 )
+39/modulate = Color( 1, 1, 1, 1 )
+39/region = Rect2( 96, 8, 8, 8 )
+39/is_autotile = false
+39/occluder_offset = Vector2( 4, 4 )
+39/navigation_offset = Vector2( 4, 4 )
+39/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+40/name = "Green V"
+40/texture = ExtResource( 2 )
+40/tex_offset = Vector2( 0, 0 )
+40/modulate = Color( 1, 1, 1, 1 )
+40/region = Rect2( 120, 8, 8, 8 )
+40/is_autotile = false
+40/occluder_offset = Vector2( 4, 4 )
+40/navigation_offset = Vector2( 4, 4 )
+40/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+41/name = "Blue HCap L2"
+41/texture = ExtResource( 2 )
+41/tex_offset = Vector2( 0, 0 )
+41/modulate = Color( 1, 1, 1, 1 )
+41/region = Rect2( 56, 8, 8, 8 )
+41/is_autotile = false
+41/occluder_offset = Vector2( 4, 4 )
+41/navigation_offset = Vector2( 4, 4 )
+41/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+42/name = "Blue HCap L"
+42/texture = ExtResource( 2 )
+42/tex_offset = Vector2( 0, 0 )
+42/modulate = Color( 1, 1, 1, 1 )
+42/region = Rect2( 72, 16, 8, 8 )
+42/is_autotile = false
+42/occluder_offset = Vector2( 4, 4 )
+42/navigation_offset = Vector2( 4, 4 )
+42/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+43/name = "Blue HCap R"
+43/texture = ExtResource( 2 )
+43/tex_offset = Vector2( 0, 0 )
+43/modulate = Color( 1, 1, 1, 1 )
+43/region = Rect2( 80, 16, 8, 8 )
+43/is_autotile = false
+43/occluder_offset = Vector2( 4, 4 )
+43/navigation_offset = Vector2( 4, 4 )
+43/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+44/name = "Blue H"
+44/texture = ExtResource( 2 )
+44/tex_offset = Vector2( 0, 0 )
+44/modulate = Color( 1, 1, 1, 1 )
+44/region = Rect2( 128, 0, 8, 8 )
+44/is_autotile = false
+44/occluder_offset = Vector2( 4, 4 )
+44/navigation_offset = Vector2( 4, 4 )
+44/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+45/name = "Blue Cross"
+45/texture = ExtResource( 2 )
+45/tex_offset = Vector2( 0, 0 )
+45/modulate = Color( 1, 1, 1, 1 )
+45/region = Rect2( 104, 16, 8, 8 )
+45/is_autotile = false
+45/occluder_offset = Vector2( 4, 4 )
+45/navigation_offset = Vector2( 4, 4 )
+45/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+46/name = "Blue VCap T"
+46/texture = ExtResource( 2 )
+46/tex_offset = Vector2( 0, 0 )
+46/modulate = Color( 1, 1, 1, 1 )
+46/region = Rect2( 88, 0, 8, 8 )
+46/is_autotile = false
+46/occluder_offset = Vector2( 4, 4 )
+46/navigation_offset = Vector2( 4, 4 )
+46/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+47/name = "Blue VCap B"
+47/texture = ExtResource( 2 )
+47/tex_offset = Vector2( 0, 0 )
+47/modulate = Color( 1, 1, 1, 1 )
+47/region = Rect2( 88, 8, 8, 8 )
+47/is_autotile = false
+47/occluder_offset = Vector2( 4, 4 )
+47/navigation_offset = Vector2( 4, 4 )
+47/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+48/name = "Blue V"
+48/texture = ExtResource( 2 )
+48/tex_offset = Vector2( 0, 0 )
+48/modulate = Color( 1, 1, 1, 1 )
+48/region = Rect2( 128, 8, 8, 8 )
+48/is_autotile = false
+48/occluder_offset = Vector2( 4, 4 )
+48/navigation_offset = Vector2( 4, 4 )
+48/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+49/name = "Red Ramp UL"
+49/texture = ExtResource( 2 )
+49/tex_offset = Vector2( 0, 0 )
+49/modulate = Color( 1, 1, 1, 1 )
+49/region = Rect2( 192, 0, 8, 8 )
+49/is_autotile = false
+49/occluder_offset = Vector2( 4, 4 )
+49/navigation_offset = Vector2( 4, 4 )
+49/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+50/name = "Red Ramp UR"
+50/texture = ExtResource( 2 )
+50/tex_offset = Vector2( 0, 0 )
+50/modulate = Color( 1, 1, 1, 1 )
+50/region = Rect2( 200, 0, 8, 8 )
+50/is_autotile = false
+50/occluder_offset = Vector2( 4, 4 )
+50/navigation_offset = Vector2( 4, 4 )
+50/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+51/name = "Red Ramp BR"
+51/texture = ExtResource( 2 )
+51/tex_offset = Vector2( 0, 0 )
+51/modulate = Color( 1, 1, 1, 1 )
+51/region = Rect2( 200, 8, 8, 8 )
+51/is_autotile = false
+51/occluder_offset = Vector2( 4, 4 )
+51/navigation_offset = Vector2( 4, 4 )
+51/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+52/name = "Red Ramp BL"
+52/texture = ExtResource( 2 )
+52/tex_offset = Vector2( 0, 0 )
+52/modulate = Color( 1, 1, 1, 1 )
+52/region = Rect2( 192, 8, 8, 8 )
+52/is_autotile = false
+52/occluder_offset = Vector2( 4, 4 )
+52/navigation_offset = Vector2( 4, 4 )
+52/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+53/name = "Green Ramp UL"
+53/texture = ExtResource( 2 )
+53/tex_offset = Vector2( 0, 0 )
+53/modulate = Color( 1, 1, 1, 1 )
+53/region = Rect2( 176, 0, 8, 8 )
+53/is_autotile = false
+53/occluder_offset = Vector2( 4, 4 )
+53/navigation_offset = Vector2( 4, 4 )
+53/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+54/name = "Green Ramp UR"
+54/texture = ExtResource( 2 )
+54/tex_offset = Vector2( 0, 0 )
+54/modulate = Color( 1, 1, 1, 1 )
+54/region = Rect2( 184, 0, 8, 8 )
+54/is_autotile = false
+54/occluder_offset = Vector2( 4, 4 )
+54/navigation_offset = Vector2( 4, 4 )
+54/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+55/name = "Green Ramp BR"
+55/texture = ExtResource( 2 )
+55/tex_offset = Vector2( 0, 0 )
+55/modulate = Color( 1, 1, 1, 1 )
+55/region = Rect2( 184, 8, 8, 8 )
+55/is_autotile = false
+55/occluder_offset = Vector2( 4, 4 )
+55/navigation_offset = Vector2( 4, 4 )
+55/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+56/name = "Green Ramp BL"
+56/texture = ExtResource( 2 )
+56/tex_offset = Vector2( 0, 0 )
+56/modulate = Color( 1, 1, 1, 1 )
+56/region = Rect2( 176, 8, 8, 8 )
+56/is_autotile = false
+56/occluder_offset = Vector2( 4, 4 )
+56/navigation_offset = Vector2( 4, 4 )
+56/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+57/name = "Blue Ramp UL"
+57/texture = ExtResource( 2 )
+57/tex_offset = Vector2( 0, 0 )
+57/modulate = Color( 1, 1, 1, 1 )
+57/region = Rect2( 160, 0, 8, 8 )
+57/is_autotile = false
+57/occluder_offset = Vector2( 4, 4 )
+57/navigation_offset = Vector2( 4, 4 )
+57/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+58/name = "Blue Ramp UR"
+58/texture = ExtResource( 2 )
+58/tex_offset = Vector2( 0, 0 )
+58/modulate = Color( 1, 1, 1, 1 )
+58/region = Rect2( 168, 0, 8, 8 )
+58/is_autotile = false
+58/occluder_offset = Vector2( 4, 4 )
+58/navigation_offset = Vector2( 4, 4 )
+58/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+59/name = "Blue Ramp BR"
+59/texture = ExtResource( 2 )
+59/tex_offset = Vector2( 0, 0 )
+59/modulate = Color( 1, 1, 1, 1 )
+59/region = Rect2( 168, 8, 8, 8 )
+59/is_autotile = false
+59/occluder_offset = Vector2( 4, 4 )
+59/navigation_offset = Vector2( 4, 4 )
+59/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+60/name = "Blue Ramp BL"
+60/texture = ExtResource( 2 )
+60/tex_offset = Vector2( 0, 0 )
+60/modulate = Color( 1, 1, 1, 1 )
+60/region = Rect2( 160, 8, 8, 8 )
+60/is_autotile = false
+60/occluder_offset = Vector2( 4, 4 )
+60/navigation_offset = Vector2( 4, 4 )
+60/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+
