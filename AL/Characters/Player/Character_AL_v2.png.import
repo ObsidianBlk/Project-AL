@@ -10,7 +10,7 @@ source_file="res://AL/Characters/Player/Character_AL_v2.png"
 source_md5="16b7efd3d51b9c74325500c5ebf5acca"
 
 dest_files=[ "res://.import/Character_AL_v2.png-94a8712202de641549e8e78255dae3bf.stex" ]
-dest_md5="00504f1bbef8aa33432284973796684d"
+dest_md5="8bc541f7bbe6f1eead7a3507e244f482"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

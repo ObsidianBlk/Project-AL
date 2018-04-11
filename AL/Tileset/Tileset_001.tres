@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=9 format=2]
+[gd_resource type="TileSet" load_steps=10 format=2]
 
 [ext_resource path="res://AL/Core/Shaders/Tileset_Anim_H.shader" type="Shader" id=1]
 [ext_resource path="res://AL/Tileset/Tileset_001.png" type="Texture" id=2]
@@ -13,6 +13,11 @@ shader_param/anim_time = 1.5
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4, 4 )
+
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 4 )
@@ -624,7 +629,7 @@ b = Vector2( -3, -5 )
 41/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
 } ]
 42/name = "Blue HCap L"
@@ -893,4 +898,27 @@ b = Vector2( -3, -5 )
 "shape": SubResource( 6 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
 } ]
+61/name = "Blue Sq"
+61/texture = ExtResource( 2 )
+61/tex_offset = Vector2( 0, 0 )
+61/modulate = Color( 1, 1, 1, 1 )
+61/region = Rect2( 56, 8, 8, 8 )
+61/is_autotile = false
+61/occluder_offset = Vector2( 4, 4 )
+61/navigation_offset = Vector2( 4, 4 )
+61/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
+} ]
+62/name = "Ladder"
+62/texture = ExtResource( 2 )
+62/tex_offset = Vector2( 0, 0 )
+62/modulate = Color( 1, 1, 1, 1 )
+62/region = Rect2( 112, 16, 8, 8 )
+62/is_autotile = false
+62/occluder_offset = Vector2( 4, 4 )
+62/navigation_offset = Vector2( 4, 4 )
+62/shapes = [  ]
 

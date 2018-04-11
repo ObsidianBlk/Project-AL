@@ -1,11 +1,61 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://AL/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://AL/Characters/Player/Character_AL_v2.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Gradient" id=1]
 
-resource_name = "Attack"
+offsets = PoolRealArray( 0, 1 )
+colors = PoolColorArray( 0.84375, 0.573486, 0, 1, 0.546875, 0.872559, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+
+flags = 4
+gradient = SubResource( 1 )
+width = 2048
+
+[sub_resource type="ParticlesMaterial" id=3]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 2
+emission_box_extents = Vector3( 1, 8, 1 )
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 0.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 50.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 4.0
+scale_random = 0.25
+color_ramp = SubResource( 2 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Damping" ]
+
+[sub_resource type="Animation" id=4]
+
 length = 1.0
 loop = true
 step = 0.1
@@ -70,9 +120,8 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 
-resource_name = "Climb"
 length = 1.2
 loop = true
 step = 0.1
@@ -137,9 +186,8 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 
-resource_name = "Crouch"
 length = 1.0
 loop = true
 step = 0.1
@@ -204,9 +252,8 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 
-resource_name = "Crouch Attack"
 length = 1.0
 loop = true
 step = 0.1
@@ -271,9 +318,8 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 
-resource_name = "Death"
 length = 0.8
 loop = false
 step = 0.1
@@ -302,7 +348,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 
 length = 3.0
 loop = false
@@ -368,7 +414,7 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=10]
 
 length = 1.0
 loop = false
@@ -434,7 +480,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 
 length = 1.6
 loop = false
@@ -500,9 +546,8 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 
-resource_name = "Jump"
 length = 0.3
 loop = false
 step = 0.1
@@ -567,9 +612,8 @@ tracks/4/keys = {
 "values": [ Vector2( 1.46544, 0.104673 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=13]
 
-resource_name = "Land"
 length = 0.3
 loop = false
 step = 0.1
@@ -634,9 +678,8 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=14]
 
-resource_name = "Roll"
 length = 0.4
 loop = true
 step = 0.1
@@ -701,7 +744,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=15]
 
 length = 1.5
 loop = true
@@ -767,7 +810,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.15141, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=16]
 
 length = 1.6
 loop = true
@@ -833,7 +876,7 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=17]
 
 length = 0.5
 loop = false
@@ -899,7 +942,7 @@ tracks/4/keys = {
 "values": [ 0.495331 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=18]
 
 length = 1.0
 loop = true
@@ -965,25 +1008,49 @@ tracks/4/keys = {
 "values": [ Vector2( 1.46544, 0.104673 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=16]
+[sub_resource type="CapsuleShape2D" id=19]
 
 custom_solver_bias = 0.0
 radius = 3.88667
 height = 6.77577
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Material" ]
 speed = 65
 accel_rate = 2.5
 decel_rate = 0.8
-jump_strength_multiplier = 0.45
+jump_strength_multiplier = 0.35
 
-[node name="Spr_Character" type="Sprite" parent="." index="0"]
+[node name="Dash_Particles" type="Particles2D" parent="." index="0"]
+
+rotation = -3.14159
+emitting = false
+amount = 100
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = false
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = false
+draw_order = 0
+process_material = SubResource( 3 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Material", "Process Material" ]
+
+[node name="Spr_Character" type="Sprite" parent="." index="1"]
 
 position = Vector2( 1, 0 )
 texture = ExtResource( 2 )
@@ -992,34 +1059,34 @@ hframes = 12
 frame = 51
 _sections_unfolded = [ "Transform" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Attack = SubResource( 1 )
-anims/Climb = SubResource( 2 )
-anims/Crouch = SubResource( 3 )
-"anims/Crouch Attack" = SubResource( 4 )
-anims/Death = SubResource( 5 )
-anims/Idle = SubResource( 6 )
-"anims/Idle A1" = SubResource( 7 )
-"anims/Idle A2" = SubResource( 8 )
-anims/Jump = SubResource( 9 )
-anims/Land = SubResource( 10 )
-anims/Roll = SubResource( 11 )
-anims/Run = SubResource( 12 )
-"anims/Run Attack" = SubResource( 13 )
-"anims/To Ball" = SubResource( 14 )
-"anims/Wall Grip" = SubResource( 15 )
+anims/Attack = SubResource( 4 )
+anims/Climb = SubResource( 5 )
+anims/Crouch = SubResource( 6 )
+"anims/Crouch Attack" = SubResource( 7 )
+anims/Death = SubResource( 8 )
+anims/Idle = SubResource( 9 )
+"anims/Idle A1" = SubResource( 10 )
+"anims/Idle A2" = SubResource( 11 )
+anims/Jump = SubResource( 12 )
+anims/Land = SubResource( 13 )
+anims/Roll = SubResource( 14 )
+anims/Run = SubResource( 15 )
+"anims/Run Attack" = SubResource( 16 )
+"anims/To Ball" = SubResource( 17 )
+"anims/Wall Grip" = SubResource( 18 )
 blend_times = [  ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
 position = Vector2( 1.46544, 0 )
-shape = SubResource( 16 )
+shape = SubResource( 19 )
 _sections_unfolded = [ "Transform" ]
 
 
