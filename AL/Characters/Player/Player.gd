@@ -26,6 +26,8 @@ var dash_check_timestamp = 0
 var dash_check_direction = 0
 var dash_timer = 0
 
+var cling_delay = 0
+
 
 func check_dash(dir, btn_timestamp):
 	if dash_check_direction == 0 or dash_check_direction == dir:
@@ -220,13 +222,22 @@ func process_ctrls(delta):
 			if ctrl.jump.down:
 				jump()
 		STATE.Clinging:
-			if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
-				if ctrl.left.down and $Spr_Character.flip_h == false:
-					move(1) # Start moving in OPPOSITE Direction of where we're "gripping" the wall.
-					jump(true) # Then JUMP!
-				elif ctrl.right.down and $Spr_Character.flip_h == true:
-					move(-1)
-					jump(true)
+			if ctrl.left.down or ctrl.right.down:
+				if ctrl.left.down:
+					if $Spr_Character.flip_h == false:
+						move(-1) # Start moving in OPPOSITE Direction of where we're "gripping" the wall.
+						jump(true) # Then JUMP!
+						ctrl.right.down = false # This is a bold faced LIE!
+					else:
+						move(-1)
+				if ctrl.right.down:
+					if $Spr_Character.flip_h == true:
+						move(1)
+						jump(true)
+						print (velocity)
+						ctrl.left.down = false
+					else:
+						move(1)
 
 
 func _physics_process(delta):
@@ -273,10 +284,13 @@ func _physics_process(delta):
 						run(1, true)
 				else:
 					idle()
-			elif is_on_wall() and state == STATE.Falling:
+			elif is_on_wall():
 				cling()
-		elif state == STATE.Clinging and is_on_floor():
-			idle()
+		elif state == STATE.Clinging:
+			if is_on_floor():
+				idle()
+			elif not is_on_wall():
+				fall()
 		elif on_ladder:
 			velocity.y = 0
 		if velocity.y > ENV.GRAVITY*0.1 and state != STATE.Falling and state != STATE.Clinging:
