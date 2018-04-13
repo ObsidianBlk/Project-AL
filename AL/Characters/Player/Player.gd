@@ -22,6 +22,10 @@ var ctrl = {
 	climb={down=false, timestamp=0}
 }
 
+var invincible = false
+var invincible_timer = 0
+var dmg_timer = 0
+
 var dash_check_timestamp = 0
 var dash_check_direction = 0
 var dash_timer = 0
@@ -30,9 +34,12 @@ var cling_delay = 0
 
 
 func check_dash(dir, btn_timestamp):
+	if dmg_timer > 0:
+		return
 	if dash_check_direction == 0 or dash_check_direction == dir:
 		if dash_check_timestamp > 0 and dash_check_timestamp < btn_timestamp:
 			if OS.get_ticks_msec() - dash_check_timestamp <= 300:
+				set_invincible(true)
 				dash_timer = 0.3
 				$Dash_Particles.emitting = true
 			dash_check_timestamp = 0
@@ -62,6 +69,8 @@ func idle():
 	$AnimationPlayer.play("Idle")
 
 func run(dir, state_change_only=false):
+	if dmg_timer > 0:
+		return
 	if state != STATE.Running:
 		state = STATE.Running
 		$AnimationPlayer.play("Run")
@@ -70,6 +79,8 @@ func run(dir, state_change_only=false):
 		move(dir)
 
 func move(dir, delta = 0):
+	if dmg_timer > 0:
+		return
 	flip(dir)
 	if state == STATE.Running or state == STATE.Climbing or state == STATE.Clinging:
 		if dash_timer > 0:
@@ -84,6 +95,8 @@ func move(dir, delta = 0):
 			velocity.x = clamp(velocity.x + ((dir*speed*2)*delta), -speed, speed)
 
 func climb(dir):
+	if dmg_timer > 0:
+		return
 	if on_ladder:
 		state = STATE.Climbing
 		if dir == 0:
@@ -99,15 +112,21 @@ func climb(dir):
 				$AnimationPlayer.play("Climb")
 
 func cling():
+	if dmg_timer > 0:
+		return
 	state = STATE.Clinging
 	$AnimationPlayer.play("Wall Grip")
 
 func crouch():
+	if dmg_timer > 0:
+		return
 	state = STATE.Crouching
 	velocity.x = 0
 	$AnimationPlayer.play("Crouch")
 
 func jump(high_jump=false):
+	if dmg_timer > 0:
+		return
 	if jump_released:
 		jump_released = false
 		state = STATE.Jumping
@@ -121,6 +140,34 @@ func jump(high_jump=false):
 func fall():
 	state = STATE.Falling
 	$AnimationPlayer.play("Land")
+
+
+func dmg_and_throw(dmg_val, vdir):
+	dmg_timer = 1.0
+	$AnimationPlayer.play("Damaged")
+	invincible = true
+	invincible_timer = 2.0
+	velocity = vdir.normalized()*speed*0.25
+
+func set_invincible(enable):
+	if invincible_timer <= 0 and dmg_timer <= 0:
+		if enable == true:
+			invincible = true
+			$Spr_Character.modulate.a = 0.5
+		else:
+			invincible = false
+			$Spr_Character.modulate.a = 1.0
+
+func update_idle():
+	if state == STATE.Idle:
+		if $AnimationPlayer.is_playing() == false:
+			var rnd = floor(rand_range(0, 100))
+			if rnd >= 0 and rnd < 50:
+				$AnimationPlayer.play("Idle")
+			elif rnd >= 50 and rnd < 75:
+				$AnimationPlayer.play("Idle A1")
+			else:
+				$AnimationPlayer.play("Idle A2")
 
 func _ready():
 	set_process_unhandled_input(true)
@@ -223,21 +270,20 @@ func process_ctrls(delta):
 				jump()
 		STATE.Clinging:
 			if ctrl.left.down or ctrl.right.down:
-				if ctrl.left.down:
-					if $Spr_Character.flip_h == false:
-						move(-1) # Start moving in OPPOSITE Direction of where we're "gripping" the wall.
-						jump(true) # Then JUMP!
-						ctrl.right.down = false # This is a bold faced LIE!
-					else:
+				if ctrl.left.down and $Spr_Character.flip_h == true:
 						move(-1)
-				if ctrl.right.down:
-					if $Spr_Character.flip_h == true:
+				if ctrl.right.down and $Spr_Character.flip_h == false:
 						move(1)
-						jump(true)
-						print (velocity)
-						ctrl.left.down = false
-					else:
-						move(1)
+			if ctrl.jump.down and jump_released == true:
+				if $Spr_Character.flip_h == false:
+					move(-1) # Start moving in OPPOSITE Direction of where we're "gripping" the wall.
+					jump(true) # Then JUMP!
+					ctrl.right.down = false # This is a bold faced LIE!
+				else:
+					move(1)
+					jump(true)
+					print (velocity)
+					ctrl.left.down = false
 
 
 func _physics_process(delta):
@@ -246,7 +292,7 @@ func _physics_process(delta):
 		velocity.y = 0
 	
 	if dash_timer <= 0:
-		if not on_ladder:
+		if not on_ladder and dmg_timer <= 0:
 			if not is_on_floor():
 				if state == STATE.Clinging:
 					velocity.y = min(velocity.y + (ENV.GRAVITY*delta), ENV.MAX_GRAVITY*0.05)
@@ -259,6 +305,7 @@ func _physics_process(delta):
 		if dash_timer <= 0:
 			velocity.x = 0
 			$Dash_Particles.emitting = false
+			set_invincible(false)
 	
 	move_and_slide(velocity, ENV.UP, 12.0, 3, 0.8726639)
 	
@@ -270,7 +317,9 @@ func _physics_process(delta):
 		if is_on_wall():
 			# TODO: If "Wall Jump" unlocked, test if we're in a landing state and set state accordingly.
 			velocity.x = 0
-			dash_timer = 0
+			if dash_timer > 0:
+				dash_timer = 0
+				set_invincible(false)
 			$Dash_Particles.emitting = false
 		if state == STATE.Jumping or state == STATE.Falling:
 			if on_ladder and state == STATE.Falling:
@@ -295,6 +344,17 @@ func _physics_process(delta):
 			velocity.y = 0
 		if velocity.y > ENV.GRAVITY*0.1 and state != STATE.Falling and state != STATE.Clinging:
 			fall()
+	
+	if invincible_timer > 0:
+		invincible_timer = max(invincible_timer - delta, 0)
+		if invincible_timer <= 0:
+			set_invincible(false)
+	if dmg_timer > 0:
+		dmg_timer = max(dmg_timer - delta, 0)
+		if dmg_timer <= 0:
+			$AnimationPlayer.stop()
+			$Spr_Character.modulate.a = 0.5 # We should still have some invincibility!
+	update_idle()
 
 
 

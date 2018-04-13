@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://AL/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://AL/Characters/Player/Character_AL_v2.png" type="Texture" id=2]
@@ -316,6 +316,25 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+
+[sub_resource type="Animation" id=20]
+
+resource_name = "Damaged"
+length = 0.5
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spr_Character:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.294118 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -1014,7 +1033,7 @@ custom_solver_bias = 0.0
 radius = 3.88667
 height = 6.77577
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -1057,7 +1076,7 @@ texture = ExtResource( 2 )
 vframes = 7
 hframes = 12
 frame = 51
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 
@@ -1070,6 +1089,7 @@ anims/Attack = SubResource( 4 )
 anims/Climb = SubResource( 5 )
 anims/Crouch = SubResource( 6 )
 "anims/Crouch Attack" = SubResource( 7 )
+anims/Damaged = SubResource( 20 )
 anims/Death = SubResource( 8 )
 anims/Idle = SubResource( 9 )
 "anims/Idle A1" = SubResource( 10 )

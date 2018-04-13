@@ -36,8 +36,7 @@ func _get_target_path():
 func _set_offset(val):
 	Offset = val
 	if $Camera_Offset != null:
-		print("Setting the offset!!")
-		$Camera_Offset.translate(Offset)
+		$Camera_Offset.position = Offset
 
 func _get_offset():
 	return Offset

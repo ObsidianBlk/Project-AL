@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://AL/Characters/Pinwheel/Pinwheel.gd" type="Script" id=1]
+[ext_resource path="res://AL/Characters/Pinwheel/Anchor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://AL/Characters/Pinwheel/EBall.tscn" type="PackedScene" id=3]
+
+[node name="Pinwheel Small" type="Position2D"]
+
+script = ExtResource( 1 )
+degrees_per_second = 72
+
+[node name="Pivot" type="Position2D" parent="." index="0"]
+
+[node name="Anchor" parent="Pivot" index="0" instance=ExtResource( 2 )]
+
+[node name="EBall" parent="Pivot" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 0, -16 )
+
+[node name="EBall2" parent="Pivot" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 0, -32 )
+
+

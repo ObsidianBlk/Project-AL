@@ -12,4 +12,4 @@ func on_body_entered(body):
 			triggered = true
 			var cam = parent.get_node("Camera_Offset_View")
 			cam.TargetPath = body.get_path()
-			cam.Offset = Vector2(body.facing.x*32, 0)
+			cam.Offset = Vector2(48, 0)
