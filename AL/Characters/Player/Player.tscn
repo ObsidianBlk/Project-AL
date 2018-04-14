@@ -1,7 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://AL/Characters/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://AL/Characters/Player/Character_AL_v2.png" type="Texture" id=2]
+[ext_resource path="res://Others/SFX/Jump_00.wav" type="AudioStream" id=3]
+[ext_resource path="res://Others/SFX/Jump_03.wav" type="AudioStream" id=4]
+[ext_resource path="res://Others/SFX/Explosion_04.wav" type="AudioStream" id=5]
+[ext_resource path="res://Others/SFX/Open_01.wav" type="AudioStream" id=6]
 
 [sub_resource type="Gradient" id=1]
 
@@ -318,7 +322,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=8]
 
 resource_name = "Damaged"
 length = 0.5
@@ -337,7 +341,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.294118 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 
 length = 0.8
 loop = false
@@ -367,7 +371,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 
 length = 3.0
 loop = false
@@ -433,7 +437,7 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 
 length = 1.0
 loop = false
@@ -499,7 +503,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 
 length = 1.6
 loop = false
@@ -565,7 +569,7 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 
 length = 0.3
 loop = false
@@ -631,7 +635,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.46544, 0.104673 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 
 length = 0.3
 loop = false
@@ -697,7 +701,7 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 
 length = 0.4
 loop = true
@@ -736,7 +740,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 3.88667 ]
+"values": [ 3.0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CollisionShape2D:shape:height")
@@ -763,7 +767,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 
 length = 1.5
 loop = true
@@ -829,7 +833,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.15141, 0 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 
 length = 1.6
 loop = true
@@ -895,7 +899,7 @@ tracks/4/keys = {
 "values": [ 6.77577 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 
 length = 0.5
 loop = false
@@ -961,7 +965,7 @@ tracks/4/keys = {
 "values": [ 0.495331 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 
 length = 1.0
 loop = true
@@ -1027,7 +1031,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1.46544, 0.104673 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=19]
+[sub_resource type="CapsuleShape2D" id=20]
 
 custom_solver_bias = 0.0
 radius = 3.88667
@@ -1075,7 +1079,7 @@ position = Vector2( 1, 0 )
 texture = ExtResource( 2 )
 vframes = 7
 hframes = 12
-frame = 51
+frame = 12
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
@@ -1089,24 +1093,72 @@ anims/Attack = SubResource( 4 )
 anims/Climb = SubResource( 5 )
 anims/Crouch = SubResource( 6 )
 "anims/Crouch Attack" = SubResource( 7 )
-anims/Damaged = SubResource( 20 )
-anims/Death = SubResource( 8 )
-anims/Idle = SubResource( 9 )
-"anims/Idle A1" = SubResource( 10 )
-"anims/Idle A2" = SubResource( 11 )
-anims/Jump = SubResource( 12 )
-anims/Land = SubResource( 13 )
-anims/Roll = SubResource( 14 )
-anims/Run = SubResource( 15 )
-"anims/Run Attack" = SubResource( 16 )
-"anims/To Ball" = SubResource( 17 )
-"anims/Wall Grip" = SubResource( 18 )
+anims/Damaged = SubResource( 8 )
+anims/Death = SubResource( 9 )
+anims/Idle = SubResource( 10 )
+"anims/Idle A1" = SubResource( 11 )
+"anims/Idle A2" = SubResource( 12 )
+anims/Jump = SubResource( 13 )
+anims/Land = SubResource( 14 )
+anims/Roll = SubResource( 15 )
+anims/Run = SubResource( 16 )
+"anims/Run Attack" = SubResource( 17 )
+"anims/To Ball" = SubResource( 18 )
+"anims/Wall Grip" = SubResource( 19 )
 blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 1.46544, 0 )
-shape = SubResource( 19 )
+shape = SubResource( 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="A_Jump" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="A_Jump_High" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="A_Hit" type="AudioStreamPlayer2D" parent="." index="6"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="A_Move_Collide" type="AudioStreamPlayer2D" parent="." index="7"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Ball_Ceiling_Checker" type="RayCast2D" parent="." index="8"]
+
+position = Vector2( 1, 4 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, -8 )
+collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
 

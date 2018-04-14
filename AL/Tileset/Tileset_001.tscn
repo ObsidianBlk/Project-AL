@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://AL/Core/Shaders/Tileset_Anim_H.shader" type="Shader" id=1]
 [ext_resource path="res://AL/Tileset/Tileset_001.png" type="Texture" id=2]
@@ -45,6 +45,15 @@ b = Vector2( -3, -5 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 4 )
+
+[sub_resource type="ShaderMaterial" id=8]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/frame_size = 8
+shader_param/frames = 5
+shader_param/anim_time = 0.5
+_sections_unfolded = [ "shader_param" ]
 
 [node name="Tileset_001" type="Node"]
 
@@ -4004,6 +4013,39 @@ position = Vector2( 424, 16 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 32, 224, 32, 32 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Push_Arrows" type="Sprite" parent="." index="150"]
+
+material = SubResource( 8 )
+position = Vector2( 224, 56 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 56, 48, 8, 8 )
+_sections_unfolded = [ "Material", "Region" ]
+
+[node name="Red Door" type="Sprite" parent="." index="151"]
+
+position = Vector2( 248, 64 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 96, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Green Door" type="Sprite" parent="." index="152"]
+
+position = Vector2( 272, 64 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 120, 48, 24, 24 )
+_sections_unfolded = [ "Region" ]
+
+[node name="Blue Door" type="Sprite" parent="." index="153"]
+
+position = Vector2( 296, 64 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 144, 48, 24, 24 )
 _sections_unfolded = [ "Region" ]
 
 

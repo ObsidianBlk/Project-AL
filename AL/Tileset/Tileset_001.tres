@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=11 format=2]
+[gd_resource type="TileSet" load_steps=12 format=2]
 
 [ext_resource path="res://AL/Core/Shaders/Tileset_Anim_H.shader" type="Shader" id=1]
 [ext_resource path="res://AL/Tileset/Tileset_001.png" type="Texture" id=2]
@@ -46,7 +46,16 @@ b = Vector2( -3, -5 )
 custom_solver_bias = 0.0
 extents = Vector2( 4, 4 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="ShaderMaterial" id=8]
+
+render_priority = 0
+shader = ExtResource( 1 )
+shader_param/frame_size = 8
+shader_param/frames = 5
+shader_param/anim_time = 0.5
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 4 )
@@ -634,7 +643,7 @@ extents = Vector2( 4, 4 )
 41/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 8 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 4, 4 )
 } ]
 42/name = "Blue HCap L"
@@ -2143,4 +2152,41 @@ extents = Vector2( 4, 4 )
 150/occluder_offset = Vector2( 16, 16 )
 150/navigation_offset = Vector2( 16, 16 )
 150/shapes = [  ]
+151/name = "Push_Arrows"
+151/texture = ExtResource( 2 )
+151/tex_offset = Vector2( 0, 0 )
+151/material = SubResource( 8 )
+151/modulate = Color( 1, 1, 1, 1 )
+151/region = Rect2( 56, 48, 8, 8 )
+151/is_autotile = false
+151/occluder_offset = Vector2( 4, 4 )
+151/navigation_offset = Vector2( 4, 4 )
+151/shapes = [  ]
+152/name = "Red Door"
+152/texture = ExtResource( 2 )
+152/tex_offset = Vector2( 0, 0 )
+152/modulate = Color( 1, 1, 1, 1 )
+152/region = Rect2( 96, 48, 24, 24 )
+152/is_autotile = false
+152/occluder_offset = Vector2( 12, 12 )
+152/navigation_offset = Vector2( 12, 12 )
+152/shapes = [  ]
+153/name = "Green Door"
+153/texture = ExtResource( 2 )
+153/tex_offset = Vector2( 0, 0 )
+153/modulate = Color( 1, 1, 1, 1 )
+153/region = Rect2( 120, 48, 24, 24 )
+153/is_autotile = false
+153/occluder_offset = Vector2( 12, 12 )
+153/navigation_offset = Vector2( 12, 12 )
+153/shapes = [  ]
+154/name = "Blue Door"
+154/texture = ExtResource( 2 )
+154/tex_offset = Vector2( 0, 0 )
+154/modulate = Color( 1, 1, 1, 1 )
+154/region = Rect2( 144, 48, 24, 24 )
+154/is_autotile = false
+154/occluder_offset = Vector2( 12, 12 )
+154/navigation_offset = Vector2( 12, 12 )
+154/shapes = [  ]
 

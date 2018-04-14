@@ -1,15 +1,18 @@
 extends Area2D
 
-onready var parent = $'..'
+export(NodePath) var CameraPath
+var cam = null
 var triggered = false
 
 func _ready():
-	self.connect("body_entered", self, "on_body_entered")
+	if CameraPath != null:
+		cam = get_node(CameraPath)
+		if cam != null:
+			self.connect("body_entered", self, "on_body_entered")
 
 func on_body_entered(body):
 	if triggered == false:
 		if body.get_name() == "Player":
 			triggered = true
-			var cam = parent.get_node("Camera_Offset_View")
 			cam.TargetPath = body.get_path()
 			cam.Offset = Vector2(48, 0)

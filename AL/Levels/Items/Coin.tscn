@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://AL/Levels/Misc Scripts/Coin.gd" type="Script" id=1]
+[ext_resource path="res://AL/Core/Shaders/Tileset_Anim_H.shader" type="Shader" id=2]
+[ext_resource path="res://AL/Tileset/Tileset_001.png" type="Texture" id=3]
+[ext_resource path="res://Others/SFX/Collect_Point_02.wav" type="AudioStream" id=4]
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = ExtResource( 2 )
+shader_param/frame_size = 8
+shader_param/frames = 5
+shader_param/anim_time = 0.5
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 4.0
+
+[node name="Coin" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+special = false
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+material = SubResource( 2 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 56, 56, 8, 8 )
+_sections_unfolded = [ "Material", "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 4, 4 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+

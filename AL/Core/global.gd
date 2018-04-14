@@ -17,3 +17,7 @@ func _on_screen_resized():
 	
 	# Reset the viewport to the "base size".
 	root.set_size(base_size)
+
+
+func level_change(lvl_name):
+	get_tree().change_scene("res://AL/Levels/"+lvl_name+".tscn")

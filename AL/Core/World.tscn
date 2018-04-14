@@ -6,6 +6,6 @@
 
 _sections_unfolded = [ "Visibility" ]
 
-[node name="Node" parent="." index="0" instance=ExtResource( 1 )]
+[node name="Menu" parent="." index="0" instance=ExtResource( 1 )]
 
 

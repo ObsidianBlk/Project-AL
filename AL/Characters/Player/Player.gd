@@ -5,7 +5,7 @@ export var accel_rate = 2.5
 export var decel_rate = 0.8
 export var jump_strength_multiplier = 0.35
 
-enum STATE{Idle, Running, Crouching, Jumping, Falling, Climbing, Clinging}
+enum STATE{Idle, Running, Crouching, Jumping, Falling, Climbing, Clinging, Ball}
 var state = STATE.Idle
 var velocity = Vector2()
 var jump_released = true
@@ -22,6 +22,8 @@ var ctrl = {
 	climb={down=false, timestamp=0}
 }
 
+var currentAudio = null
+
 var invincible = false
 var invincible_timer = 0
 var dmg_timer = 0
@@ -29,8 +31,24 @@ var dmg_timer = 0
 var dash_check_timestamp = 0
 var dash_check_direction = 0
 var dash_timer = 0
+var dashed = 0
 
 var cling_delay = 0
+
+var revive_delay = 0
+var next_level = ""
+
+
+func playSFX(sfx):
+	var nsfx = get_node("A_" + sfx)
+	if nsfx != null:
+		if currentAudio != nsfx:
+			if currentAudio != null:
+				currentAudio.stop()
+			currentAudio = nsfx
+			currentAudio.play(0)
+		elif not currentAudio.is_playing():
+			currentAudio.play(0)
 
 
 func check_dash(dir, btn_timestamp):
@@ -64,12 +82,15 @@ func flip(dir):
 
 
 func idle():
+	if player.life_force <= 0:
+		return
+		
 	velocity.x = 0
 	state = STATE.Idle
 	$AnimationPlayer.play("Idle")
 
 func run(dir, state_change_only=false):
-	if dmg_timer > 0:
+	if dmg_timer > 0 or player.life_force <= 0:
 		return
 	if state != STATE.Running:
 		state = STATE.Running
@@ -79,10 +100,10 @@ func run(dir, state_change_only=false):
 		move(dir)
 
 func move(dir, delta = 0):
-	if dmg_timer > 0:
+	if dmg_timer > 0 or player.life_force <= 0:
 		return
 	flip(dir)
-	if state == STATE.Running or state == STATE.Climbing or state == STATE.Clinging:
+	if state == STATE.Running or state == STATE.Climbing or state == STATE.Clinging or state == STATE.Ball:
 		if dash_timer > 0:
 			velocity.x = dir*speed*3
 		else:
@@ -95,7 +116,7 @@ func move(dir, delta = 0):
 			velocity.x = clamp(velocity.x + ((dir*speed*2)*delta), -speed, speed)
 
 func climb(dir):
-	if dmg_timer > 0:
+	if dmg_timer > 0 or player.life_force <= 0:
 		return
 	if on_ladder:
 		state = STATE.Climbing
@@ -112,30 +133,52 @@ func climb(dir):
 				$AnimationPlayer.play("Climb")
 
 func cling():
-	if dmg_timer > 0:
+	if dmg_timer > 0 or player.life_force <= 0:
 		return
 	state = STATE.Clinging
 	$AnimationPlayer.play("Wall Grip")
 
 func crouch():
-	if dmg_timer > 0:
+	if dmg_timer > 0 or player.life_force <= 0:
 		return
 	state = STATE.Crouching
 	velocity.x = 0
 	$AnimationPlayer.play("Crouch")
 
 func jump(high_jump=false):
-	if dmg_timer > 0:
+	if dmg_timer > 0 or player.life_force <= 0:
 		return
 	if jump_released:
 		jump_released = false
 		state = STATE.Jumping
 		if high_jump:
+			playSFX("Jump_High")
 			velocity.y = -(ENV.GRAVITY*jump_strength_multiplier*1.5)
 		else:
+			playSFX("Jump")
 			velocity.y = -(ENV.GRAVITY*jump_strength_multiplier)
 		$AnimationPlayer.play("Jump")
 
+
+func ball(enable):
+	if dmg_timer > 0 or player.life_force <= 0:
+		return
+		
+	if enable == true and state != STATE.Ball:
+		state = STATE.Ball
+		$AnimationPlayer.play("To Ball")
+	elif enable == false and state == STATE.Ball:
+		if $Ball_Ceiling_Checker.is_colliding():
+			var colName = $Ball_Ceiling_Checker.get_collider().get_name()
+			if not (colName.begins_with("Trigger_") or colName.begins_with("Coin") or colName.begins_with("Special")):
+			#if not $Ball_Ceiling_Checker.get_collider().get_name().begins_with("Trigger_"):
+				return;
+		$AnimationPlayer.play_backwards("To Ball")
+		$AnimationPlayer.connect("animation_finished", self, "on_end_ball")
+
+func on_end_ball(val):
+	$AnimationPlayer.disconnect("animation_finished", self, "on_end_ball")
+	idle()
 
 func fall():
 	state = STATE.Falling
@@ -143,11 +186,24 @@ func fall():
 
 
 func dmg_and_throw(dmg_val, vdir):
-	dmg_timer = 1.0
-	$AnimationPlayer.play("Damaged")
-	invincible = true
-	invincible_timer = 2.0
-	velocity = vdir.normalized()*speed*0.25
+	if player.life_force <= 0:
+		return
+		
+	player.damage(dmg_val)
+	if player.life_force <= 0:
+		$AnimationPlayer.play("Death")
+		$AnimationPlayer.connect("animation_finished", self, "on_dead")
+	else:
+		dmg_timer = 1.0
+		$AnimationPlayer.play("Damaged")
+		invincible = true
+		invincible_timer = 2.0
+		velocity = vdir.normalized()*speed*0.25
+	playSFX("Hit")
+
+func on_dead(val):
+	$AnimationPlayer.disconnect("animation_finished", self, "on_dead")
+	revive_delay = 2.0
 
 func set_invincible(enable):
 	if invincible_timer <= 0 and dmg_timer <= 0:
@@ -208,16 +264,23 @@ func process_ctrls(delta):
 					climb(1)
 				else:
 					crouch()
-			elif ctrl.climb.down and on_ladder:
-				climb(-1)
+			elif ctrl.climb.down:
+				if on_ladder:
+					climb(-1)
+				elif next_level != "":
+					global.level_change(next_level)
+					next_level = ""
 			elif ctrl.jump.down:
 				jump()
 				
 		STATE.Crouching:
 			if not ctrl.crouch.down:
 				idle()
-			elif ctrl.jump.down:
-				jump(true)
+			else:
+				if OS.get_ticks_msec() - ctrl.crouch.timestamp > 1000:
+					ball(true)
+				if ctrl.jump.down:
+					jump(true)
 			if ctrl.left.down:
 				flip(-1)
 			elif ctrl.right.down:
@@ -233,6 +296,9 @@ func process_ctrls(delta):
 						run(1)
 				else:
 					idle()
+				if ctrl.climb.down and next_level != "":
+					global.level_change(next_level)
+					next_level = ""
 				if ctrl.jump.down:
 					jump()
 				if ctrl.crouch.down:
@@ -284,10 +350,45 @@ func process_ctrls(delta):
 					jump(true)
 					print (velocity)
 					ctrl.left.down = false
+		STATE.Ball:
+			if $AnimationPlayer.current_animation != "To Ball" and dash_timer <= 0:
+				if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
+					if ctrl.left.down:
+						if $AnimationPlayer.current_animation != "Roll":
+							$AnimationPlayer.play("Roll")
+						check_dash(-1, ctrl.left.timestamp)
+						move(-1)
+					elif ctrl.right.down:
+						if $AnimationPlayer.current_animation != "Roll":
+							$AnimationPlayer.play("Roll")
+						check_dash(1, ctrl.right.timestamp)
+						move(1)
+				else:
+					$AnimationPlayer.stop()
+					move(0)
+				if ctrl.climb.down:
+					if next_level != "":
+						global.level_change(next_level)
+						next_level = ""
+					else:
+						ball(false)
+
+
+func _process_revival(delta):
+	revive_delay = max(revive_delay - delta, 0)
+	if revive_delay <= 0:
+		player.revive()
+		self.position = player.checkpoint
 
 
 func _physics_process(delta):
+	if revive_delay > 0:
+		_process_revival(delta)
+		return
+
 	process_ctrls(delta)
+	if dashed > 0:
+		dashed = max(dashed - delta, 0)
 	if velocity.y < 0 and is_on_ceiling():
 		velocity.y = 0
 	
@@ -315,17 +416,19 @@ func _physics_process(delta):
 			idle()
 	else:
 		if is_on_wall():
-			# TODO: If "Wall Jump" unlocked, test if we're in a landing state and set state accordingly.
 			velocity.x = 0
 			if dash_timer > 0:
 				dash_timer = 0
+				dashed = 0.5
 				set_invincible(false)
+				playSFX("Move_Collide")
 			$Dash_Particles.emitting = false
 		if state == STATE.Jumping or state == STATE.Falling:
 			if on_ladder and state == STATE.Falling:
 				velocity.y = 0
 				idle()
 			elif is_on_floor():
+				playSFX("Move_Collide")
 				if (ctrl.left.down or ctrl.right.down) and ctrl.left.down != ctrl.right.down:
 					if ctrl.left.down:
 						run(-1, true)
@@ -342,7 +445,7 @@ func _physics_process(delta):
 				fall()
 		elif on_ladder:
 			velocity.y = 0
-		if velocity.y > ENV.GRAVITY*0.1 and state != STATE.Falling and state != STATE.Clinging:
+		if velocity.y > ENV.GRAVITY*0.1 and state != STATE.Falling and state != STATE.Clinging and state != STATE.Ball:
 			fall()
 	
 	if invincible_timer > 0:
