@@ -22,7 +22,7 @@ extents = Vector2( 800, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Visibility" ]
 
@@ -54,7 +54,7 @@ position = Vector2( 180, 20 )
 [node name="Camera_Offset_View" parent="." index="2" instance=ExtResource( 3 )]
 
 TargetPath = NodePath("../Player")
-Offset = Vector2( 32, 0 )
+Offset = Vector2( 16, 0 )
 Current = true
 
 [node name="Area2D" type="Area2D" parent="." index="3"]

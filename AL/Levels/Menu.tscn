@@ -34,27 +34,27 @@ extents = Vector2( 8, 8 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 20, 10 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 6, 10 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40, 10 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4, 44 )
 
-[node name="Menu" type="Node" index="0"]
+[node name="Menu" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -101,8 +101,6 @@ tile_data = PoolIntArray( -131031, 147, 0, -131030, 147, 0, -131029, 147, 0, -13
 _sections_unfolded = [ "Cell" ]
 
 [node name="Triggers" type="Position2D" parent="." index="2"]
-
-editor/display_folded = true
 
 [node name="Trigger_Grab_Cameraa" type="Area2D" parent="Triggers" index="0"]
 
@@ -426,7 +424,7 @@ TutorialNode = NodePath("../Hold Crouch")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial Texts/Trigger_Hold_Crouch" index="0"]
 
-shape = SubResource( 8 )
+shape = SubResource( 5 )
 
 [node name="Trigger_Ladder_Hint" type="Area2D" parent="Tutorial Texts" index="8"]
 
@@ -445,7 +443,7 @@ TutorialNode = NodePath("../Ladder Hint")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial Texts/Trigger_Ladder_Hint" index="0"]
 
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Trigger_Clinging" type="Area2D" parent="Tutorial Texts" index="9"]
 
@@ -463,7 +461,7 @@ TutorialNode = NodePath("../Wall Cling")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial Texts/Trigger_Clinging" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Primary Ladder" type="Area2D" parent="." index="5"]
 
@@ -484,7 +482,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Primary Ladder" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 8 )
 
 [node name="Player" parent="." index="6" instance=ExtResource( 9 )]
 

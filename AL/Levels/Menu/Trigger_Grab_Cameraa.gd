@@ -15,4 +15,4 @@ func on_body_entered(body):
 		if body.get_name() == "Player":
 			triggered = true
 			cam.TargetPath = body.get_path()
-			cam.Offset = Vector2(48, 0)
+			cam.Offset = Vector2(16, 0)

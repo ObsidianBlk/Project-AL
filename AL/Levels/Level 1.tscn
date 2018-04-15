@@ -34,7 +34,7 @@ extents = Vector2( 800, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[node name="Level 1" type="Node" index="0"]
+[node name="Level 1" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -255,7 +255,7 @@ state = 0
 [node name="Camera_Offset_View" parent="." index="4" instance=ExtResource( 7 )]
 
 TargetPath = NodePath("../Player")
-Offset = Vector2( 48, 0 )
+Offset = Vector2( 16, 0 )
 Current = true
 
 [node name="Trigger_Hidden_A" type="Area2D" parent="." index="5"]
