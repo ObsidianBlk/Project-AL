@@ -54,7 +54,7 @@ extents = Vector2( 40, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 4, 44 )
 
-[node name="Menu" type="Node"]
+[node name="Menu" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -190,11 +190,9 @@ shape = SubResource( 3 )
 
 [node name="Labels" type="Position2D" parent="." index="3"]
 
-editor/display_folded = true
-
 [node name="Credit Text" type="TileMap" parent="Labels" index="0"]
 
-modulate = Color( 0.648193, 0, 0.703125, 1 )
+modulate = Color( 0.929688, 0.530212, 0.530212, 1 )
 mode = 0
 tile_set = ExtResource( 6 )
 cell_size = Vector2( 8, 8 )
@@ -259,8 +257,6 @@ tile_data = PoolIntArray( 917540, 11, 0, 917541, 21, 0, 917542, 11, 0, 983077, 2
 _sections_unfolded = [ "Cell", "Visibility" ]
 
 [node name="Tutorial Texts" type="Position2D" parent="." index="4"]
-
-editor/display_folded = true
 
 [node name="Movement" type="TileMap" parent="Tutorial Texts" index="0"]
 
@@ -487,6 +483,7 @@ shape = SubResource( 8 )
 [node name="Player" parent="." index="6" instance=ExtResource( 9 )]
 
 position = Vector2( 136, -184 )
+dash_btn_delay = 0.4
 
 [node name="Camera_Offset_View" parent="." index="7" instance=ExtResource( 10 )]
 

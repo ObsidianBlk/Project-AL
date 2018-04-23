@@ -83,6 +83,7 @@ _sections_unfolded = [ "Cell" ]
 [node name="Player" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 32, 16 )
+dash_btn_delay = 0.4
 
 [node name="Hazards" type="Position2D" parent="." index="3"]
 

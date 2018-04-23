@@ -50,6 +50,7 @@ _sections_unfolded = [ "Cell" ]
 [node name="Player" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 180, 20 )
+dash_btn_delay = 0.4
 
 [node name="Camera_Offset_View" parent="." index="2" instance=ExtResource( 3 )]
 

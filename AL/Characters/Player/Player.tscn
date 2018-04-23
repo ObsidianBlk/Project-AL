@@ -1046,9 +1046,9 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material" ]
 speed = 65
-accel_rate = 2.5
-decel_rate = 0.8
 jump_strength_multiplier = 0.35
+dash_btn_delay = 1.0
+dash_time = 0.3
 
 [node name="Dash_Particles" type="Particles2D" parent="." index="0"]
 

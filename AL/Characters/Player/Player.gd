@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
 export var speed = 65
-export var accel_rate = 2.5
-export var decel_rate = 0.8
+#export var accel_rate = 2.5
+#export var decel_rate = 0.8
 export var jump_strength_multiplier = 0.35
+export(float, 0.25, 1.0) var dash_btn_delay = 1.0
+export(float, 0.3, 1.0) var dash_time = 0.3
 
 enum STATE{Idle, Running, Crouching, Jumping, Falling, Climbing, Clinging, Ball}
 var state = STATE.Idle
@@ -56,9 +58,9 @@ func check_dash(dir, btn_timestamp):
 		return
 	if dash_check_direction == 0 or dash_check_direction == dir:
 		if dash_check_timestamp > 0 and dash_check_timestamp < btn_timestamp:
-			if OS.get_ticks_msec() - dash_check_timestamp <= 300:
+			if OS.get_ticks_msec() - dash_check_timestamp <= (dash_btn_delay*300):
 				set_invincible(true)
-				dash_timer = 0.3
+				dash_timer = dash_time
 				$Dash_Particles.emitting = true
 			dash_check_timestamp = 0
 			dash_check_direction = 0

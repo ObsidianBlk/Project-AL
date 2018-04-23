@@ -32,7 +32,7 @@ extents = Vector2( 4, 2 )
 custom_solver_bias = 0.0
 extents = Vector2( 4, 1 )
 
-[node name="Spike" type="Position2D"]
+[node name="Spike" type="Position2D" index="0"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -53,7 +53,7 @@ playback_speed = 1.0
 anims/Anim = SubResource( 1 )
 blend_times = [  ]
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="Trigger_SpikePain" type="Area2D" parent="." index="2"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -64,7 +64,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger_SpikePain" index="0"]
 
 position = Vector2( 4, 5 )
 shape = SubResource( 2 )
